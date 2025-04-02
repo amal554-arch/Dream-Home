@@ -1,0 +1,22 @@
+# Java
+*.class
+*.jar
+*.log
+
+# IntelliJ / Eclipse
+.idea/
+*.iml
+*.classpath
+*.project
+target/
+
+# VS Code
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# PHP specific
+vendor/
+.env

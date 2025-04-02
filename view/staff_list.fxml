@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="dreamhome.controller.StaffListController">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Select Branch:"/>
+            <ComboBox fx:id="branchBox" prefWidth="300"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="staffTable" prefHeight="500" prefWidth="800" fixedCellSize="35.0">
+            <columns>
+                <TableColumn fx:id="nameCol" text="Full Name"/>
+                <TableColumn fx:id="emailCol" text="Email" prefWidth="180"/>
+                <TableColumn fx:id="roleCol" text="Role"/>
+                <TableColumn fx:id="phoneCol" text="Phone"/>
+                <TableColumn fx:id="dateCol" text="Date Joined"/>
+                <TableColumn fx:id="salaryCol" text="Salary"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="← Back to Dashboard" onAction="#onBackClicked"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

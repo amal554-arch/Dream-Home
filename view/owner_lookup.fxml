@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="dreamhome.controller.OwnerLookupController">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Search Owners:"/>
+            <TextField fx:id="searchField" promptText="Enter name, phone, or email" prefWidth="300"/>
+            <Button text="Search" onAction="#onSearchClicked"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="ownerTable" prefWidth="700">
+            <columns>
+                <TableColumn fx:id="nameCol" text="Name" prefWidth="150"/>
+                <TableColumn fx:id="phoneCol" text="Phone" prefWidth="120"/>
+                <TableColumn fx:id="emailCol" text="Email" prefWidth="200"/>
+                <TableColumn fx:id="addressCol" text="Address" prefWidth="230"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="New Owner" onAction="#onNewOwnerClicked" />
+            <Button text="Select Owner" onAction="#onSelectClicked"/>
+            <Button text="Cancel" onAction="#onCancelClicked"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

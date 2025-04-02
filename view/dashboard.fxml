@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="dreamhome.controller.DashboardController">
+
+    <top>
+        <HBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <Label text="🏠 DreamHome Dashboard" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
+            <Label fx:id="welcomeLabel" text="Welcome, User" />
+            <Button text="Logout" onAction="#onLogoutClicked" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20" />
+            </padding>
+
+            <Button fx:id="registerStaffBtn" text="Register Staff" prefWidth="200" onAction="#onRegisterStaffClicked" />
+            <Button fx:id="viewStaffBtn" text="View Staff List" prefWidth="200" onAction="#onViewStaffClicked" />
+            <Button fx:id="registerPropertyBtn" text="Register Property" prefWidth="200" onAction="#onRegisterPropertyClicked" />
+            <Button fx:id="registerClientBtn" text="Register Client" prefWidth="200" onAction="#onRegisterClientClicked" />
+            <Button fx:id="reviewLeasesBtn" text="Review Leases" prefWidth="200" onAction="#onReviewLeasesClicked" />
+            <Button fx:id="sendReportsBtn" text="Send Weekly Reports" prefWidth="200" onAction="#onSendReportsClicked" />
+
+        </VBox>
+    </center>
+
+</BorderPane>

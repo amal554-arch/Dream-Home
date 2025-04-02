@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="dreamhome.controller.PropertyFormController">
+
+    <center>
+        <VBox spacing="10" alignment="CENTER" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Register New Property"
+                style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+            <TextField fx:id="addressField" promptText="Property Address" />
+
+            <ComboBox fx:id="typeBox" promptText="Select Property Type"/>
+
+            <Label text="Rooms:" />
+            <Spinner fx:id="roomsSpinner" />
+
+            <TextField fx:id="rentField" promptText="Monthly Rent (GBP)" />
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Owner:" />
+                <Label fx:id="selectedOwnerLabel" text="None selected" />
+                <Button text="Lookup Owner" onAction="#onOwnerLookupClicked" />
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button fx:id="uploadButton" text="Upload Image(s)" onAction="#onUploadImagesClicked" />
+                <Label fx:id="imageStatusLabel" text="No images selected" />
+            </HBox>
+
+            <ListView fx:id="imageList" prefHeight="100"/>
+
+            <Label fx:id="statusLabel" style="-fx-text-fill: red;" />
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Register Property" onAction="#onRegisterPropertyClicked"/>
+                <Button text="Cancel" onAction="#onCancelClicked"/>
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>
