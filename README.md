@@ -117,4 +117,4 @@ We're currently building the **public property listing page** (`properties.php`)
 
 ## 📄 License
 
-MIT License
+This project is built solely for academic purposes in response to the **DreamHome case study** and is not intended for commercial deployment or use.
