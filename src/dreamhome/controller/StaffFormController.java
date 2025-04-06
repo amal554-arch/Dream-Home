@@ -4,6 +4,7 @@ import dreamhome.dao.BranchDAO;
 import dreamhome.dao.StaffDAO;
 import dreamhome.model.Branch;
 import dreamhome.model.Staff;
+import dreamhome.utils.EmailUtil;
 import dreamhome.utils.PasswordHasher;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -23,18 +24,16 @@ public class StaffFormController {
     @FXML private TextField salaryField;
     @FXML private TextField emailField;
     @FXML private TextField phoneField;
-    @FXML private PasswordField passwordField;
-    @FXML private PasswordField confirmField;
+    @FXML private PasswordField passwordField; // Will be hidden in FXML
+    @FXML private PasswordField confirmField;  // Will be hidden in FXML
     @FXML private ComboBox<Branch> branchBox;
     @FXML private Label statusLabel;
 
     @FXML
     public void initialize() {
-        // Load roles dynamically
         roleBox.setItems(FXCollections.observableArrayList("Select Role", "Manager", "Supervisor", "Assistant"));
         roleBox.setValue("Select Role");
 
-        // Load all branches into the dropdown
         List<Branch> branches = BranchDAO.getAllBranches();
         branchBox.setItems(FXCollections.observableArrayList(branches));
     }
@@ -46,14 +45,11 @@ public class StaffFormController {
         String salaryStr = salaryField.getText().trim();
         String email = emailField.getText().trim();
         String phone = phoneField.getText().trim();
-        String password = passwordField.getText();
-        String confirm = confirmField.getText();
         Branch branch = branchBox.getValue();
 
         statusLabel.setStyle("-fx-text-fill: red;");
 
-        if (name.isEmpty() || role == null || salaryStr.isEmpty() || email.isEmpty()
-                || password.isEmpty() || confirm.isEmpty() || branch == null) {
+        if (name.isEmpty() || role == null || salaryStr.isEmpty() || email.isEmpty() || branch == null) {
             statusLabel.setText("All fields except phone are required.");
             return;
         }
@@ -66,25 +62,30 @@ public class StaffFormController {
             return;
         }
 
-        if (!password.equals(confirm)) {
-            statusLabel.setText("Passwords do not match.");
-            return;
-        }
-
         if (StaffDAO.getStaffByEmail(email) != null) {
             statusLabel.setText("Email is already registered.");
             return;
         }
 
-        String passwordHash = PasswordHasher.hashPassword(password);
-        Staff staff = new Staff(0, name, role, salary, email, passwordHash, phone, null, branch.getBranchID());
+        // Default password
+        String defaultPassword = "admin123";
+        String passwordHash = PasswordHasher.hashPassword(defaultPassword);
 
+        Staff staff = new Staff(0, name, role, salary, email, passwordHash, phone, null, branch.getBranchID());
         boolean success = StaffDAO.insertStaff(staff);
 
         if (success) {
             statusLabel.setStyle("-fx-text-fill: green;");
             statusLabel.setText("✅ Staff registered successfully.");
             clearForm();
+
+            // Send email notification
+            try {
+                EmailUtil.sendRegistrationEmail(email, name, defaultPassword);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("⚠️ Failed to send registration email.");
+            }
         } else {
             statusLabel.setText("Registration failed. Try again.");
         }
@@ -110,7 +111,7 @@ public class StaffFormController {
         salaryField.clear();
         emailField.clear();
         phoneField.clear();
-        passwordField.clear();
+        passwordField.clear(); // These are hidden anyway
         confirmField.clear();
         branchBox.setValue(null);
     }

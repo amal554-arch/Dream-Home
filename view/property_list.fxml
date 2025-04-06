@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="dreamhome.controller.PropertyListController">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="0" left="10"/>
+            </padding>
+            <Button text="← Back to Dashboard" onAction="#onBackClicked"/>
+            <Label text="  Property List" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="propertyTable">
+            <columns>
+                <TableColumn fx:id="addressCol" text="Address" />
+                <TableColumn fx:id="typeCol" text="Type" />
+                <TableColumn fx:id="roomsCol" text="Rooms" />
+                <TableColumn fx:id="rentCol" text="Rent (£)" />
+                <TableColumn fx:id="availableCol" text="Available" />
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>

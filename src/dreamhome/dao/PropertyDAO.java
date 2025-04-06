@@ -81,4 +81,35 @@ public class PropertyDAO {
             e.printStackTrace();
         }
     }
+
+    public static List<Property> getAllProperties() {
+        List<Property> properties = new ArrayList<>();
+        String sql = "SELECT * FROM property";
+    
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+    
+            while (rs.next()) {
+                Property property = new Property(
+                    rs.getInt("PropertyID"),
+                    rs.getString("Address"),
+                    rs.getString("Type"),
+                    rs.getInt("Rooms"),
+                    rs.getFloat("Rent"),
+                    rs.getBoolean("IsAvailable"),
+                    rs.getInt("BranchID"),
+                    rs.getInt("OwnerID"),
+                    rs.getInt("StaffID")
+                );
+                properties.add(property);
+            }
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
+        return properties;
+    }
+    
 }

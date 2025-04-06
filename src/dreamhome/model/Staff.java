@@ -63,5 +63,16 @@ public class Staff {
         return branchId;
     }
 
-    // (Optional) Setters if needed in future
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+    
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
 }

@@ -129,20 +129,34 @@ public class PropertyFormController {
 
     private void saveImages(int propertyId) {
         if (propertyId <= 0) return;
-
-        String imageDir = "images/";
-        new File(imageDir).mkdirs(); // Ensure folder exists
-
+    
+        String localDir = "images/";
+        String webDir = "C:/xampp/htdocs/website/images/";
+    
+        new File(localDir).mkdirs(); // Ensure JavaFX image folder exists
+        new File(webDir).mkdirs();   // Ensure website image folder exists
+    
         for (File file : selectedImages) {
-            String destPath = imageDir + "property_" + propertyId + "_" + file.getName();
+            String imageName = "property_" + propertyId + "_" + file.getName();
+    
+            Path localPath = Paths.get(localDir + imageName);
+            Path webPath = Paths.get(webDir + imageName);
+    
             try {
-                Files.copy(file.toPath(), Paths.get(destPath), StandardCopyOption.REPLACE_EXISTING);
-                PropertyImageDAO.insertImage(propertyId, destPath);
+                // Copy to JavaFX folder
+                Files.copy(file.toPath(), localPath, StandardCopyOption.REPLACE_EXISTING);
+    
+                // Copy to website folder
+                Files.copy(file.toPath(), webPath, StandardCopyOption.REPLACE_EXISTING);
+    
+                // Save only the filename (not full path) in the DB
+                PropertyImageDAO.insertImage(propertyId, imageName);
+    
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-    }
+    }    
 
     private void clearForm() {
         addressField.clear();

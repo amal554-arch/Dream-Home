@@ -3,20 +3,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="dreamhome.controller.LoginController"
-      spacing="15" alignment="CENTER" prefWidth="300" prefHeight="250">
-    
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20" />
-    </padding>
-    
-    <Label text="DreamHome Login" style="-fx-font-size: 18px;"/>
-    
-    <TextField fx:id="emailField" promptText="Email" />
-    <PasswordField fx:id="passwordField" promptText="Password" />
-    
-    <Button text="Login" onAction="#onLoginClicked" />
-    <Label fx:id="statusLabel" textFill="red" />
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="dreamhome.controller.LoginController" style="-fx-background-color: linear-gradient(to bottom, #f4f6f8, #dfe6ed);">
+    <VBox spacing="15" alignment="CENTER" style="-fx-background-color: white; -fx-padding: 30; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0.1, 0, 4);"
+          prefWidth="350">
 
-</VBox>
+        <Label text="DreamHome" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+        <Label text="Staff Login" style="-fx-font-size: 16px; -fx-text-fill: #34495e;" />
+
+        <TextField fx:id="emailField" promptText="Email"
+                   style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-padding: 8;" />
+        <PasswordField fx:id="passwordField" promptText="Password"
+                       style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-padding: 8;" />
+
+        <Button text="Login" onAction="#onLoginClicked"
+                style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-weight: bold;" />
+
+        <Label fx:id="statusLabel" textFill="red" wrapText="true" style="-fx-text-fill: red;" />
+
+        <Hyperlink text="Forgot Password?" onAction="#onForgotPasswordClicked"
+                   style="-fx-text-fill: #2980b9; -fx-font-size: 12px;" />
+    </VBox>
+</StackPane>

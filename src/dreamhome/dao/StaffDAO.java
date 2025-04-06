@@ -91,5 +91,41 @@ public class StaffDAO {
     
         return staffList;
     }
+
+    public static boolean updateStaffProfile(Staff staff) {
+        String sql = "UPDATE staff SET FullName = ?, Phone = ?, Email = ? WHERE StaffID = ?";
+    
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    
+            stmt.setString(1, staff.getFullName());
+            stmt.setString(2, staff.getPhone());
+            stmt.setString(3, staff.getEmail());
+            stmt.setInt(4, staff.getStaffId());
+    
+            return stmt.executeUpdate() == 1;
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public static boolean updatePassword(int staffId, String newHash) {
+        String sql = "UPDATE staff SET PasswordHash = ? WHERE StaffID = ?";
+    
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    
+            stmt.setString(1, newHash);
+            stmt.setInt(2, staffId);
+    
+            return stmt.executeUpdate() == 1;
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }    
     
 }

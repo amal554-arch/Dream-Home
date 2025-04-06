@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.paint.Color?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="dreamhome.controller.LeaseListController">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #3498db;">
+            <padding><Insets top="10" right="20" bottom="10" left="20"/></padding>
+            <Button text="← Back" onAction="#onBackClicked" style="-fx-background-color: white; -fx-text-fill: #3498db; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+            <Label text="Lease Applications" style="-fx-font-size: 22px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10" alignment="TOP_CENTER" style="-fx-background-color: #f4f6f8;">
+            <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+
+            <TableView fx:id="leaseTable" prefHeight="600" prefWidth="1150" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 8;">
+                <columns>
+                    <TableColumn fx:id="leaseIdCol" text="Lease ID" prefWidth="70"/>
+                    <TableColumn fx:id="propertyIdCol" text="Property ID" prefWidth="80"/>
+                    <TableColumn fx:id="clientIdCol" text="Client ID" prefWidth="80"/>
+                    <TableColumn fx:id="staffIdCol" text="Staff ID" prefWidth="80"/>
+                    <TableColumn fx:id="startDateCol" text="Start Date" prefWidth="100"/>
+                    <TableColumn fx:id="endDateCol" text="End Date" prefWidth="100"/>
+                    <TableColumn fx:id="depositCol" text="Deposit (£)" prefWidth="100"/>
+                    <TableColumn fx:id="frequencyCol" text="Payment Frequency" prefWidth="120"/>
+                    <TableColumn fx:id="methodCol" text="Payment Method" prefWidth="120"/>
+                    <TableColumn fx:id="statusCol" text="Status" prefWidth="90"/>
+                    <TableColumn fx:id="actionCol" text="Actions" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

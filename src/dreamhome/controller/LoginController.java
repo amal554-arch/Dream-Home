@@ -49,4 +49,19 @@ public class LoginController {
             }
         }
     }
+
+    @FXML
+    private void onForgotPasswordClicked() {
+        try {
+            FXMLLoader loader = new FXMLLoader(new File("view/forgot_password.fxml").toURI().toURL());
+            Parent root = loader.load();
+            Stage stage = (Stage) emailField.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Forgot Password");
+        } catch (Exception e) {
+            e.printStackTrace();
+            statusLabel.setText("Failed to load password reset.");
+        }
+    }
+
 }

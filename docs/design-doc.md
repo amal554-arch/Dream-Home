@@ -327,22 +327,6 @@ DreamHome/
 │
 ├── config.properties                   # DB, image path config
 ├── README.md
-│
-├── website/                            # 🌐 PHP Website Backend
-│   ├── auth/
-│   │   ├── login_client.php
-│   │   ├── register_client.php
-│   │   └── logout_client.php
-│   │
-│   ├── config/
-│   │   └── db.php
-│   │
-│   ├── dashboard_client.php
-│   ├── properties.php
-│   ├── lease_apply.php
-│   └── utils/
-│       └── PasswordHasher.php
-│
 └── sql/
     └── dreamhome_schema.sql
 

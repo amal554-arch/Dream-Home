@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="dreamhome.controller.ClientListController">
+    
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Label text="Select Branch:" />
+            <ComboBox fx:id="branchComboBox" prefWidth="250"/>
+            <Button text="Back" fx:id="backButton" onAction="#handleBack"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="clientTable" prefHeight="600" prefWidth="1000">
+            <columns>
+                <TableColumn fx:id="fullNameColumn" text="Full Name" prefWidth="200"/>
+                <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="150"/>
+                <TableColumn fx:id="emailColumn" text="Email" prefWidth="200"/>
+                <TableColumn fx:id="preferredTypeColumn" text="Preferred Type" prefWidth="150"/>
+                <TableColumn fx:id="maxRentColumn" text="Max Rent (£)" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <padding>
+        <Insets top="10" right="20" bottom="20" left="20"/>
+    </padding>
+</BorderPane>

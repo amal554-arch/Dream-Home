@@ -6,33 +6,45 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="dreamhome.controller.DashboardController">
 
+    <!-- Header -->
     <top>
-        <HBox spacing="10">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-
-            <Label text="🏠 DreamHome Dashboard" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #2c3e50;">
+            <padding><Insets top="12" right="15" bottom="12" left="20"/></padding>
+            <Label text="🏠 DreamHome Dashboard" style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" />
             <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
-            <Label fx:id="welcomeLabel" text="Welcome, User" />
-            <Button text="Logout" onAction="#onLogoutClicked" />
+            
+            <!-- User Menu -->
+            <VBox alignment="TOP_RIGHT">
+                <MenuButton fx:id="userMenuBtn" text="Welcome, User ▼" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;">
+                    <items>
+                        <MenuItem fx:id="viewProfileItem" text="My Profile" onAction="#onViewProfileClicked"/>
+                        <MenuItem fx:id="changePasswordItem" text="Change Password" onAction="#onChangePasswordClicked"/>
+                        <MenuItem fx:id="logoutItem" text="Logout" onAction="#onLogoutClicked"/>
+                    </items>
+                </MenuButton>
+            </VBox>
         </HBox>
     </top>
 
+    <!-- Center Buttons -->
     <center>
-        <VBox spacing="10" alignment="TOP_CENTER">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20" />
-            </padding>
+        <GridPane hgap="20" vgap="20" alignment="TOP_CENTER">
+            <padding><Insets top="30" right="20" bottom="30" left="20"/></padding>
 
-            <Button fx:id="registerStaffBtn" text="Register Staff" prefWidth="200" onAction="#onRegisterStaffClicked" />
-            <Button fx:id="viewStaffBtn" text="View Staff List" prefWidth="200" onAction="#onViewStaffClicked" />
-            <Button fx:id="registerPropertyBtn" text="Register Property" prefWidth="200" onAction="#onRegisterPropertyClicked" />
-            <Button fx:id="registerClientBtn" text="Register Client" prefWidth="200" onAction="#onRegisterClientClicked" />
-            <Button fx:id="reviewLeasesBtn" text="Review Leases" prefWidth="200" onAction="#onReviewLeasesClicked" />
-            <Button fx:id="sendReportsBtn" text="Send Weekly Reports" prefWidth="200" onAction="#onSendReportsClicked" />
+            <Button fx:id="registerStaffBtn" text="Register Staff" prefWidth="180" GridPane.rowIndex="0" GridPane.columnIndex="0" onAction="#onRegisterStaffClicked" />
+            <Button fx:id="viewStaffBtn" text="View Staff" prefWidth="180" GridPane.rowIndex="0" GridPane.columnIndex="1" onAction="#onViewStaffClicked" />
 
-        </VBox>
+            <Button fx:id="registerPropertyBtn" text="Register Property" prefWidth="180" GridPane.rowIndex="1" GridPane.columnIndex="0" onAction="#onRegisterPropertyClicked" />
+            <Button fx:id="viewPropertyBtn" text="View Properties" prefWidth="180" GridPane.rowIndex="1" GridPane.columnIndex="1" onAction="#onViewPropertyClicked" />
+
+            <Button fx:id="registerClientBtn" text="Register Client" prefWidth="180" GridPane.rowIndex="2" GridPane.columnIndex="0" onAction="#onRegisterClientClicked" />
+            <Button fx:id="viewClientBtn" text="View Clients" prefWidth="180" GridPane.rowIndex="2" GridPane.columnIndex="1" onAction="#onViewClientClicked" />
+
+            <Button fx:id="viewOwnerBtn" text="View Owners" prefWidth="180" GridPane.rowIndex="3" GridPane.columnIndex="0" onAction="#onViewOwnerClicked" />
+            <Button fx:id="reviewLeasesBtn" text="Review Leases" prefWidth="180" GridPane.rowIndex="3" GridPane.columnIndex="1" onAction="#onReviewLeasesClicked" />
+
+            <Button fx:id="sendReportsBtn" text="Send Weekly Reports" prefWidth="380" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2" onAction="#onSendReportsClicked" />
+        </GridPane>
     </center>
 
 </BorderPane>

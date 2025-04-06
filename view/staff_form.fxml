@@ -29,10 +29,12 @@
             <TextField fx:id="salaryField" promptText="Salary (GBP)"/>
             <TextField fx:id="emailField" promptText="Email"/>
             <TextField fx:id="phoneField" promptText="Phone (optional)"/>
-            <PasswordField fx:id="passwordField" promptText="Password"/>
-            <PasswordField fx:id="confirmField" promptText="Confirm Password"/>
-            <ComboBox fx:id="branchBox" promptText="Select Branch"/>
 
+            <!-- Password fields are now hidden -->
+            <PasswordField fx:id="passwordField" promptText="Password" visible="false" managed="false"/>
+            <PasswordField fx:id="confirmField" promptText="Confirm Password" visible="false" managed="false"/>
+
+            <ComboBox fx:id="branchBox" promptText="Select Branch"/>
             <Button text="Register" onAction="#onRegisterClicked"/>
             <Label fx:id="statusLabel"/>
         </VBox>
