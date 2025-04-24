@@ -131,7 +131,7 @@ public class PropertyFormController {
         if (propertyId <= 0) return;
     
         String localDir = "images/";
-        String webDir = "C:/xampp/htdocs/website/images/";
+        String webDir = "C:/xampp/htdocs/dreamhome/website/images/";
     
         new File(localDir).mkdirs(); // Ensure JavaFX image folder exists
         new File(webDir).mkdirs();   // Ensure website image folder exists
@@ -141,6 +141,8 @@ public class PropertyFormController {
     
             Path localPath = Paths.get(localDir + imageName);
             Path webPath = Paths.get(webDir + imageName);
+
+            String imageNameW = localDir + imageName;
     
             try {
                 // Copy to JavaFX folder
@@ -150,7 +152,7 @@ public class PropertyFormController {
                 Files.copy(file.toPath(), webPath, StandardCopyOption.REPLACE_EXISTING);
     
                 // Save only the filename (not full path) in the DB
-                PropertyImageDAO.insertImage(propertyId, imageName);
+                PropertyImageDAO.insertImage(propertyId, imageNameW);
     
             } catch (IOException e) {
                 e.printStackTrace();
